@@ -1,1 +1,0 @@
-/usr/bin/cc  -Wall -Wextra -g -g -fsanitize=address "CMakeFiles/gravity-pong.dir/src/main.c.o" "CMakeFiles/gravity-pong.dir/src/game.c.o" "CMakeFiles/gravity-pong.dir/src/graphics.c.o" "CMakeFiles/gravity-pong.dir/src/input.c.o" -o gravity-pong  /usr/lib/x86_64-linux-gnu/libSDL2.so 

@@ -1,1 +1,0 @@
-/usr/bin/cc -g CMakeFiles/PongWithGravity.dir/src/main.c.o CMakeFiles/PongWithGravity.dir/src/game.c.o CMakeFiles/PongWithGravity.dir/src/graphics.c.o CMakeFiles/PongWithGravity.dir/src/input.c.o -o PongWithGravity  -lSDL2 -lSDL2_ttf 
