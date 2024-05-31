@@ -50,8 +50,8 @@ brew install sdl2
 1. Clone the repository:
 
 ```sh
-git clone https://github.com/your-username/gravity-pong.git
-cd gravity-pong
+git clone https://github.com/felixBtzr/PongWithGravity.git
+cd PongWithGravity
 ```
 
 2. Create a build directory and run CMake:
