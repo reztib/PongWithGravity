@@ -3,6 +3,7 @@
 
 CMakeFiles/PongWithGravity.dir/src/game.c.o: /home/felix/gravity-pong/src/game.c \
   /home/felix/gravity-pong/include/game.h \
+  /home/felix/gravity-pong/include/input.h \
   /usr/include/SDL2/SDL.h \
   /usr/include/SDL2/SDL_assert.h \
   /usr/include/SDL2/SDL_atomic.h \
@@ -49,6 +50,7 @@ CMakeFiles/PongWithGravity.dir/src/game.c.o: /home/felix/gravity-pong/src/game.c
   /usr/include/SDL2/SDL_thread.h \
   /usr/include/SDL2/SDL_timer.h \
   /usr/include/SDL2/SDL_touch.h \
+  /usr/include/SDL2/SDL_ttf.h \
   /usr/include/SDL2/SDL_version.h \
   /usr/include/SDL2/SDL_video.h \
   /usr/include/SDL2/begin_code.h \
@@ -502,6 +504,7 @@ CMakeFiles/PongWithGravity.dir/src/input.c.o: /home/felix/gravity-pong/src/input
   /usr/include/SDL2/SDL_thread.h \
   /usr/include/SDL2/SDL_timer.h \
   /usr/include/SDL2/SDL_touch.h \
+  /usr/include/SDL2/SDL_ttf.h \
   /usr/include/SDL2/SDL_version.h \
   /usr/include/SDL2/SDL_video.h \
   /usr/include/SDL2/begin_code.h \
@@ -735,12 +738,10 @@ CMakeFiles/PongWithGravity.dir/src/main.c.o: /home/felix/gravity-pong/src/main.c
   /usr/include/SDL2/close_code.h \
   /usr/include/alloca.h \
   /usr/include/ctype.h \
-  /usr/include/dirent.h \
   /usr/include/endian.h \
   /usr/include/features-time64.h \
   /usr/include/features.h \
   /usr/include/inttypes.h \
-  /usr/include/linux/limits.h \
   /usr/include/math.h \
   /usr/include/stdc-predef.h \
   /usr/include/stdint.h \
@@ -748,35 +749,23 @@ CMakeFiles/PongWithGravity.dir/src/main.c.o: /home/felix/gravity-pong/src/main.c
   /usr/include/stdlib.h \
   /usr/include/string.h \
   /usr/include/strings.h \
-  /usr/include/unistd.h \
   /usr/include/wchar.h \
   /usr/include/x86_64-linux-gnu/SDL2/_real_SDL_config.h \
   /usr/include/x86_64-linux-gnu/bits/atomic_wide_counter.h \
   /usr/include/x86_64-linux-gnu/bits/byteswap.h \
-  /usr/include/x86_64-linux-gnu/bits/confname.h \
-  /usr/include/x86_64-linux-gnu/bits/dirent.h \
-  /usr/include/x86_64-linux-gnu/bits/dirent_ext.h \
   /usr/include/x86_64-linux-gnu/bits/endian.h \
   /usr/include/x86_64-linux-gnu/bits/endianness.h \
-  /usr/include/x86_64-linux-gnu/bits/environments.h \
   /usr/include/x86_64-linux-gnu/bits/floatn-common.h \
   /usr/include/x86_64-linux-gnu/bits/floatn.h \
   /usr/include/x86_64-linux-gnu/bits/flt-eval-method.h \
   /usr/include/x86_64-linux-gnu/bits/fp-fast.h \
   /usr/include/x86_64-linux-gnu/bits/fp-logb.h \
-  /usr/include/x86_64-linux-gnu/bits/getopt_core.h \
-  /usr/include/x86_64-linux-gnu/bits/getopt_posix.h \
   /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
   /usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h \
-  /usr/include/x86_64-linux-gnu/bits/local_lim.h \
   /usr/include/x86_64-linux-gnu/bits/long-double.h \
   /usr/include/x86_64-linux-gnu/bits/math-vector.h \
   /usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h \
   /usr/include/x86_64-linux-gnu/bits/mathcalls.h \
-  /usr/include/x86_64-linux-gnu/bits/posix1_lim.h \
-  /usr/include/x86_64-linux-gnu/bits/posix_opt.h \
-  /usr/include/x86_64-linux-gnu/bits/pthread_stack_min-dynamic.h \
-  /usr/include/x86_64-linux-gnu/bits/pthread_stack_min.h \
   /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h \
   /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h \
   /usr/include/x86_64-linux-gnu/bits/select.h \
@@ -812,7 +801,6 @@ CMakeFiles/PongWithGravity.dir/src/main.c.o: /home/felix/gravity-pong/src/main.c
   /usr/include/x86_64-linux-gnu/bits/types/wint_t.h \
   /usr/include/x86_64-linux-gnu/bits/typesizes.h \
   /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
-  /usr/include/x86_64-linux-gnu/bits/unistd_ext.h \
   /usr/include/x86_64-linux-gnu/bits/waitflags.h \
   /usr/include/x86_64-linux-gnu/bits/waitstatus.h \
   /usr/include/x86_64-linux-gnu/bits/wchar.h \
@@ -922,20 +910,6 @@ CMakeFiles/PongWithGravity.dir/src/main.c.o: /home/felix/gravity-pong/src/main.c
   /usr/lib/gcc/x86_64-linux-gnu/13/include/xtestintrin.h
 
 
-/usr/include/x86_64-linux-gnu/bits/pthread_stack_min-dynamic.h:
-
-/usr/include/x86_64-linux-gnu/bits/posix_opt.h:
-
-/usr/include/x86_64-linux-gnu/bits/getopt_core.h:
-
-/usr/include/x86_64-linux-gnu/bits/environments.h:
-
-/usr/include/x86_64-linux-gnu/bits/dirent_ext.h:
-
-/usr/include/dirent.h:
-
-/home/felix/gravity-pong/include/input.h:
-
 /home/felix/gravity-pong/src/input.c:
 
 /usr/lib/gcc/x86_64-linux-gnu/13/include/xsavesintrin.h:
@@ -1004,8 +978,6 @@ CMakeFiles/PongWithGravity.dir/src/main.c.o: /home/felix/gravity-pong/src/main.c
 
 /usr/lib/gcc/x86_64-linux-gnu/13/include/clflushoptintrin.h:
 
-/usr/include/x86_64-linux-gnu/bits/dirent.h:
-
 /usr/lib/gcc/x86_64-linux-gnu/13/include/cldemoteintrin.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/13/include/avxvnniintrin.h:
@@ -1018,17 +990,7 @@ CMakeFiles/PongWithGravity.dir/src/main.c.o: /home/felix/gravity-pong/src/main.c
 
 /usr/lib/gcc/x86_64-linux-gnu/13/include/avx512vlintrin.h:
 
-/usr/include/x86_64-linux-gnu/bits/pthread_stack_min.h:
-
 /usr/lib/gcc/x86_64-linux-gnu/13/include/avx512vlbwintrin.h:
-
-/usr/include/SDL2/SDL_ttf.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/13/include/rdseedintrin.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/13/include/lwpintrin.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/13/include/avx512vbmivlintrin.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/13/include/avx512vbmiintrin.h:
 
@@ -1043,8 +1005,6 @@ CMakeFiles/PongWithGravity.dir/src/main.c.o: /home/felix/gravity-pong/src/main.c
 /usr/lib/gcc/x86_64-linux-gnu/13/include/avx512ifmavlintrin.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/13/include/avx512dqintrin.h:
-
-/usr/include/x86_64-linux-gnu/bits/getopt_posix.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/13/include/avx512cdintrin.h:
 
@@ -1068,10 +1028,6 @@ CMakeFiles/PongWithGravity.dir/src/main.c.o: /home/felix/gravity-pong/src/main.c
 
 /usr/lib/gcc/x86_64-linux-gnu/13/include/amxbf16intrin.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/13/include/avxneconvertintrin.h:
-
-/usr/include/inttypes.h:
-
 /usr/include/features-time64.h:
 
 /usr/include/SDL2/SDL_gesture.h:
@@ -1087,8 +1043,6 @@ CMakeFiles/PongWithGravity.dir/src/main.c.o: /home/felix/gravity-pong/src/main.c
 /usr/lib/gcc/x86_64-linux-gnu/13/include/avx5124fmapsintrin.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h:
-
-/usr/include/math.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/13/include/cetintrin.h:
 
@@ -1132,15 +1086,11 @@ CMakeFiles/PongWithGravity.dir/src/main.c.o: /home/felix/gravity-pong/src/main.c
 
 /usr/include/SDL2/SDL_render.h:
 
-/usr/include/x86_64-linux-gnu/bits/confname.h:
-
 /usr/include/SDL2/SDL_keycode.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/timer_t.h:
 
 /usr/include/SDL2/SDL_platform.h:
-
-/usr/include/x86_64-linux-gnu/bits/unistd_ext.h:
 
 /usr/include/SDL2/SDL_filesystem.h:
 
@@ -1150,7 +1100,23 @@ CMakeFiles/PongWithGravity.dir/src/main.c.o: /home/felix/gravity-pong/src/main.c
 
 /usr/include/x86_64-linux-gnu/bits/typesizes.h:
 
-/usr/include/SDL2/SDL_pixels.h:
+/usr/lib/gcc/x86_64-linux-gnu/13/include/rdseedintrin.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/13/include/lwpintrin.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/13/include/avx512vbmivlintrin.h:
+
+/usr/include/SDL2/SDL_ttf.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/13/include/bmi2intrin.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/13/include/adxintrin.h:
+
+/usr/include/x86_64-linux-gnu/bits/mathcalls.h:
+
+/usr/include/SDL2/SDL_thread.h:
+
+/usr/include/SDL2/SDL_metal.h:
 
 /home/felix/gravity-pong/src/graphics.c:
 
@@ -1170,25 +1136,17 @@ CMakeFiles/PongWithGravity.dir/src/main.c.o: /home/felix/gravity-pong/src/main.c
 
 /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h:
 
-/usr/include/SDL2/SDL_metal.h:
-
 /usr/lib/gcc/x86_64-linux-gnu/13/include/avx512ifmaintrin.h:
 
 /usr/include/SDL2/SDL_misc.h:
 
 /usr/include/SDL2/SDL.h:
 
-/usr/include/SDL2/SDL_cpuinfo.h:
+/home/felix/gravity-pong/include/input.h:
 
-/usr/include/x86_64-linux-gnu/bits/wordsize.h:
+/usr/lib/gcc/x86_64-linux-gnu/13/include/avxneconvertintrin.h:
 
-/usr/lib/gcc/x86_64-linux-gnu/13/include/bmi2intrin.h:
-
-/usr/include/x86_64-linux-gnu/bits/mathcalls.h:
-
-/usr/include/SDL2/SDL_thread.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/13/include/adxintrin.h:
+/usr/include/inttypes.h:
 
 /usr/include/SDL2/SDL_joystick.h:
 
@@ -1205,6 +1163,12 @@ CMakeFiles/PongWithGravity.dir/src/main.c.o: /home/felix/gravity-pong/src/main.c
 /usr/lib/gcc/x86_64-linux-gnu/13/include/avx512fp16vlintrin.h:
 
 /usr/include/SDL2/SDL_log.h:
+
+/usr/include/SDL2/SDL_pixels.h:
+
+/usr/include/SDL2/SDL_cpuinfo.h:
+
+/usr/include/x86_64-linux-gnu/bits/wordsize.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/13/include/fmaintrin.h:
 
@@ -1248,13 +1212,13 @@ CMakeFiles/PongWithGravity.dir/src/main.c.o: /home/felix/gravity-pong/src/main.c
 
 /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h:
 
+/usr/include/math.h:
+
 /usr/include/stdc-predef.h:
 
 /usr/include/x86_64-linux-gnu/bits/uintn-identity.h:
 
 /usr/include/x86_64-linux-gnu/bits/stdlib-float.h:
-
-/usr/include/linux/limits.h:
 
 /usr/include/stdint.h:
 
@@ -1283,8 +1247,6 @@ CMakeFiles/PongWithGravity.dir/src/main.c.o: /home/felix/gravity-pong/src/main.c
 /usr/include/wchar.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/__fpos_t.h:
-
-/usr/include/x86_64-linux-gnu/bits/posix1_lim.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/13/include/float.h:
 
@@ -1398,15 +1360,11 @@ CMakeFiles/PongWithGravity.dir/src/main.c.o: /home/felix/gravity-pong/src/main.c
 
 /usr/include/x86_64-linux-gnu/bits/waitstatus.h:
 
-/usr/include/x86_64-linux-gnu/bits/local_lim.h:
-
 /usr/lib/gcc/x86_64-linux-gnu/13/include/avx512fp16intrin.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/cookie_io_functions_t.h:
 
 /usr/include/x86_64-linux-gnu/bits/wchar.h:
-
-/usr/include/unistd.h:
 
 /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h:
 
