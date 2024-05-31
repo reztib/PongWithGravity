@@ -32,6 +32,25 @@ int initSDL(SDL_Window **window, SDL_Renderer **renderer) {
     return 0;
 }
 
+void renderStartScreen(SDL_Renderer *renderer, TTF_Font *font) {
+    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+    SDL_RenderClear(renderer);
+
+    SDL_Color startScreenColor = {255, 255, 255};
+    SDL_Surface* surface = TTF_RenderText_Solid(font, "Press Enter to Start", startScreenColor);
+    SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, surface);
+
+    int text_width = surface->w;
+    int text_height = surface->h;
+    SDL_FreeSurface(surface);
+
+    SDL_Rect renderQuad = {320 - text_width / 2, 240 - text_height / 2, text_width, text_height};
+    SDL_RenderCopy(renderer, texture, NULL, &renderQuad);
+    SDL_DestroyTexture(texture);
+
+    SDL_RenderPresent(renderer);
+}
+
 void render(SDL_Renderer *renderer, GameState *gameState, TTF_Font *font) {
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
     SDL_RenderClear(renderer);

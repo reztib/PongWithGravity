@@ -1,4 +1,5 @@
 #include "game.h"
+#include "input.h"
 
 void initGame(GameState *gameState) {
     gameState->paddle.x = 320 - 50;
@@ -57,20 +58,8 @@ void handleEvents(SDL_Event *event, int *running, GameState *gameState) {
     if (event->type == SDL_QUIT) {
         *running = 0;
     } else if (event->type == SDL_KEYDOWN) {
-        switch (event->key.keysym.sym) {
-            case SDLK_LEFT:
-                gameState->paddle.velocity_x = -5;
-                break;
-            case SDLK_RIGHT:
-                gameState->paddle.velocity_x = 5;
-                break;
-        }
+        handleKeyDown(event->key.keysym.sym, &gameState->paddle);
     } else if (event->type == SDL_KEYUP) {
-        switch (event->key.keysym.sym) {
-            case SDLK_LEFT:
-            case SDLK_RIGHT:
-                gameState->paddle.velocity_x = 0;
-                break;
-        }
+        handleKeyUp(event->key.keysym.sym, &gameState->paddle);
     }
 }
