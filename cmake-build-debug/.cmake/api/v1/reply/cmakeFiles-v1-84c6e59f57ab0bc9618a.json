@@ -99,6 +99,24 @@
 			"isCMake" : true,
 			"isExternal" : true,
 			"path" : "/home/felix/Downloads/CLion-2024.1.2/clion-2024.1.2/bin/cmake/linux/x64/share/cmake-3.28/Modules/FeatureSummary.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/usr/lib/x86_64-linux-gnu/cmake/SDL2_ttf/sdl2_ttf-config-version.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "/usr/lib/x86_64-linux-gnu/cmake/SDL2_ttf/sdl2_ttf-config.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/felix/Downloads/CLion-2024.1.2/clion-2024.1.2/bin/cmake/linux/x64/share/cmake-3.28/Modules/FeatureSummary.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/felix/Downloads/CLion-2024.1.2/clion-2024.1.2/bin/cmake/linux/x64/share/cmake-3.28/Modules/CMakeFindDependencyMacro.cmake"
 		}
 	],
 	"kind" : "cmakeFiles",
