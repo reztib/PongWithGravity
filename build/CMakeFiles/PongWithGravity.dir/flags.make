@@ -4,7 +4,7 @@
 # compile C with /usr/bin/cc
 C_DEFINES = 
 
-C_INCLUDES = -I/home/felix/gravity-pong/include -isystem /usr/include/SDL2
+C_INCLUDES = -I/usr/include/SDL2 -I/home/felix/gravity-pong/include
 
 C_FLAGS = -std=gnu99
 

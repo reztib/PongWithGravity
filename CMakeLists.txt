@@ -8,6 +8,10 @@ set(CMAKE_C_STANDARD 99)
 find_package(SDL2 REQUIRED)
 include_directories(${SDL2_INCLUDE_DIRS})
 
+# Find the SDL2_ttf library
+find_package(SDL2_ttf REQUIRED)
+include_directories(${SDL2_TTF_INCLUDE_DIRS})
+
 # Include directories
 include_directories(include)
 
@@ -16,13 +20,10 @@ set(SOURCE_FILES
         src/main.c
         src/game.c
         src/graphics.c
-        src/input.c
-        include/game.h
-        include/graphics.h
-        include/input.h)
+        src/input.c)
 
 # Add the executable target
 add_executable(PongWithGravity ${SOURCE_FILES})
 
-# Link SDL2 library
-target_link_libraries(PongWithGravity ${SDL2_LIBRARIES})
+# Link SDL2 and SDL2_ttf libraries
+target_link_libraries(PongWithGravity SDL2 SDL2_ttf)

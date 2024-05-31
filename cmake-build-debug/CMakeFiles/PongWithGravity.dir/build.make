@@ -140,7 +140,6 @@ PongWithGravity: CMakeFiles/PongWithGravity.dir/src/game.c.o
 PongWithGravity: CMakeFiles/PongWithGravity.dir/src/graphics.c.o
 PongWithGravity: CMakeFiles/PongWithGravity.dir/src/input.c.o
 PongWithGravity: CMakeFiles/PongWithGravity.dir/build.make
-PongWithGravity: /usr/lib/x86_64-linux-gnu/libSDL2.so
 PongWithGravity: CMakeFiles/PongWithGravity.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/felix/gravity-pong/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking C executable PongWithGravity"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/PongWithGravity.dir/link.txt --verbose=$(VERBOSE)

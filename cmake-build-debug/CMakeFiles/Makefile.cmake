@@ -9,6 +9,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeCache.txt"
   "/home/felix/Downloads/CLion-2024.1.2/clion-2024.1.2/bin/cmake/linux/x64/share/cmake-3.28/Modules/CMakeCInformation.cmake"
   "/home/felix/Downloads/CLion-2024.1.2/clion-2024.1.2/bin/cmake/linux/x64/share/cmake-3.28/Modules/CMakeCommonLanguageInclude.cmake"
+  "/home/felix/Downloads/CLion-2024.1.2/clion-2024.1.2/bin/cmake/linux/x64/share/cmake-3.28/Modules/CMakeFindDependencyMacro.cmake"
   "/home/felix/Downloads/CLion-2024.1.2/clion-2024.1.2/bin/cmake/linux/x64/share/cmake-3.28/Modules/CMakeGenericSystem.cmake"
   "/home/felix/Downloads/CLion-2024.1.2/clion-2024.1.2/bin/cmake/linux/x64/share/cmake-3.28/Modules/CMakeInitializeConfigs.cmake"
   "/home/felix/Downloads/CLion-2024.1.2/clion-2024.1.2/bin/cmake/linux/x64/share/cmake-3.28/Modules/CMakeLanguageInformation.cmake"
@@ -28,6 +29,8 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/3.28.1/CMakeSystem.cmake"
   "/usr/lib/x86_64-linux-gnu/cmake/SDL2/sdl2-config-version.cmake"
   "/usr/lib/x86_64-linux-gnu/cmake/SDL2/sdl2-config.cmake"
+  "/usr/lib/x86_64-linux-gnu/cmake/SDL2_ttf/sdl2_ttf-config-version.cmake"
+  "/usr/lib/x86_64-linux-gnu/cmake/SDL2_ttf/sdl2_ttf-config.cmake"
   )
 
 # The corresponding makefile is:

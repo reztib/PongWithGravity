@@ -1,41 +1,81 @@
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_ttf.h>
+#include <stdio.h>
+#include <string.h>
+#include <unistd.h>
+#include <dirent.h>
 #include "game.h"
 #include "graphics.h"
-#include "input.h"
 
-int main(int argc, char *argv[]) {
-    SDL_Window *window = NULL;       // Pointer to the SDL window
-    SDL_Renderer *renderer = NULL;   // Pointer to the SDL renderer
+void print_directory_contents(const char *path) {
+    struct dirent *entry;
+    DIR *dp = opendir(path);
 
-    // Initialize SDL, create a window and renderer
-    if (initSDL(&window, &renderer) != 0) {
-        return 1;   // Return 1 if initialization fails
+    if (dp == NULL) {
+        perror("opendir");
+        return;
     }
 
-    GameObject paddle, ball;  // Create paddle and ball game objects
-    initGame(&paddle, &ball); // Initialize the game objects
+    printf("Contents of %s:\n", path);
+    while ((entry = readdir(dp))) {
+        printf("%s\n", entry->d_name);
+    }
 
-    int running = 1;          // Variable to control the game loop
-    SDL_Event event;          // SDL event structure to handle events
+    closedir(dp);
+}
 
-    // Main game loop
+int main() {
+    SDL_Window *window = NULL;
+    SDL_Renderer *renderer = NULL;
+
+    if (initSDL(&window, &renderer) != 0) {
+        return 1;
+    }
+
+    // Print the current working directory
+    char cwd[1024];
+    if (getcwd(cwd, sizeof(cwd)) != NULL) {
+        printf("Current working directory: %s\n", cwd);
+        print_directory_contents("..");  // Print contents of parent directory
+        print_directory_contents("../assets");  // Print contents of assets directory
+        print_directory_contents("../assets/fonts");  // Print contents of fonts directory
+    } else {
+        perror("getcwd() error");
+        return 1;
+    }
+
+    // Check if the font file exists
+    const char *fontPath = "../assets/fonts/PressStart2P-Regular.ttf";
+    if (access(fontPath, F_OK) != -1) {
+        printf("Font file exists: %s\n", fontPath);
+    } else {
+        printf("Font file does not exist: %s\n", fontPath);
+        cleanup(window, renderer, NULL);
+        return 1;
+    }
+
+    TTF_Font *font = TTF_OpenFont(fontPath, 12);
+    if (font == NULL) {
+        printf("TTF_OpenFont Error: %s\n", TTF_GetError());
+        cleanup(window, renderer, NULL);
+        return 1;
+    }
+
+    GameState gameState;
+    initGame(&gameState);
+
+    int running = 1;
+    SDL_Event event;
+
     while (running) {
-        // Poll and handle events
         while (SDL_PollEvent(&event)) {
-            handleEvents(&event, &running, &paddle); // Handle user input and events
+            handleEvents(&event, &running, &gameState);
         }
 
-        updateGame(&paddle, &ball); // Update game logic
-
-        // Clear the screen with black color
-        SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
-        SDL_RenderClear(renderer);
-
-        render(renderer, &paddle, &ball); // Render the game objects
-
-        SDL_RenderPresent(renderer); // Present the updated screen
+        updateGame(&gameState);
+        render(renderer, &gameState, font);
     }
 
-    cleanup(window, renderer); // Clean up and quit SDL
-    return 0; // Return 0 on successful exit
+    cleanup(window, renderer, font);
+    return 0;
 }
