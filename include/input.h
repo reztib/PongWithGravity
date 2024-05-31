@@ -1,8 +1,8 @@
 #ifndef INPUT_H
 #define INPUT_H
 
-#include <SDL2/SDL.h> // Include SDL header
-#include "game.h"     // Include game header for GameObject structure
+#include <SDL2/SDL.h>  // Include SDL header for SDL functionalities
+#include "game.h"      // Include game header for GameObject structure
 
 // Function to handle key down events
 void handleKeyDown(SDL_Keycode key, GameObject *paddle);

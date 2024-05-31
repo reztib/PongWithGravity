@@ -1,14 +1,15 @@
-#include "input.h"
+#include "input.h" // Include input header for function declarations
 
 // Handle key down events
 void handleKeyDown(SDL_Keycode key, GameObject *paddle) {
+    // Switch statement to handle different key codes
     switch (key) {
-        // Move paddle left
+        // Move paddle left when 'A' or Left Arrow is pressed
         case SDLK_a:
         case SDLK_LEFT:
             paddle->velocity_x = -5;
             break;
-            // Move paddle right
+            // Move paddle right when 'D' or Right Arrow is pressed
         case SDLK_d:
         case SDLK_RIGHT:
             paddle->velocity_x = 5;
@@ -21,11 +22,12 @@ void handleKeyDown(SDL_Keycode key, GameObject *paddle) {
 
 // Handle key up events
 void handleKeyUp(SDL_Keycode key, GameObject *paddle) {
+    // Switch statement to handle different key codes
     switch (key) {
-        // Stop moving paddle if the left key is released
+        // Stop moving paddle if 'A' or Left Arrow is released
         case SDLK_a:
         case SDLK_LEFT:
-            // Stop moving paddle if the right key is released
+            // Stop moving paddle if 'D' or Right Arrow is released
         case SDLK_d:
         case SDLK_RIGHT:
             paddle->velocity_x = 0;
