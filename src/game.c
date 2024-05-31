@@ -1,10 +1,13 @@
 #include "game.h"
 #include "input.h"
 
+float screenWidth = 800;
+float screenHeight = 600;
+
 void initGame(GameState *gameState) {
     // Initialize paddle properties
-    gameState->paddle.x = 320 - 50;
-    gameState->paddle.y = 450;
+    gameState->paddle.x = screenWidth - 10;
+    gameState->paddle.y = screenHeight - 10;
     gameState->paddle.width = 100;
     gameState->paddle.height = 20;
     gameState->paddle.velocity_x = 0;
@@ -28,14 +31,14 @@ void updateGame(GameState *gameState) {
     // Update paddle position
     paddle->x += paddle->velocity_x;
     if (paddle->x < 0) paddle->x = 0;
-    if (paddle->x + paddle->width > 640) paddle->x = 640 - paddle->width;
+    if (paddle->x + paddle->width > screenWidth) paddle->x = screenWidth - paddle->width;
 
     // Update ball position and handle collisions
     ball->velocity_y += GRAVITY;
     ball->x += ball->velocity_x;
     ball->y += ball->velocity_y;
 
-    if (ball->x < 0 || ball->x + ball->width > 640) {
+    if (ball->x < 0 || ball->x + ball->width > screenWidth) {
         ball->velocity_x = -ball->velocity_x;
     }
     if (ball->y < 0) {
@@ -49,9 +52,9 @@ void updateGame(GameState *gameState) {
         gameState->score++;  // Increment score when the ball hits the paddle
     }
 
-    if (ball->y + ball->height > 480) {
-        ball->x = 320 - 10;
-        ball->y = 240 - 10;
+    if (ball->y + ball->height > screenWidth) {
+        ball->x = screenWidth - 10;
+        ball->y = screenHeight - 10;
         ball->velocity_x = 2;
         ball->velocity_y = -5;
         gameState->score--;  // Decrement score if the ball goes out of bounds

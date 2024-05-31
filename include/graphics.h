@@ -1,9 +1,9 @@
 #ifndef GRAPHICS_H
 #define GRAPHICS_H
 
-#include <SDL2/SDL.h>  // Include SDL header for SDL functionalities
-#include <SDL2/SDL_ttf.h>  // Include SDL_ttf header for font rendering
-#include "game.h"  // Include the game header for accessing game state
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_ttf.h>
+#include "game.h"
 
 // Function to initialize SDL and create window/renderer
 int initSDL(SDL_Window **window, SDL_Renderer **renderer);

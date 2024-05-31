@@ -1,4 +1,4 @@
-#include "input.h" // Include input header for function declarations
+#include "input.h"
 
 // Handle key down events
 void handleKeyDown(SDL_Keycode key, GameObject *paddle) {

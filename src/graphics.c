@@ -9,7 +9,7 @@ int initSDL(SDL_Window **window, SDL_Renderer **renderer) {
     }
 
     // Create SDL window
-    *window = SDL_CreateWindow("Pong with Gravity", 100, 100, 640, 480, SDL_WINDOW_SHOWN);
+    *window = SDL_CreateWindow("Pong with Gravity", 100, 100, 800, 600, SDL_WINDOW_SHOWN);
     if (*window == NULL) {
         printf("SDL_CreateWindow Error: %s\n", SDL_GetError());
         SDL_Quit();

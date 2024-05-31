@@ -1,8 +1,8 @@
 #ifndef GAME_H
 #define GAME_H
 
-#include <SDL2/SDL.h>  // Include SDL header for SDL functionalities
-#include <SDL2/SDL_ttf.h>  // Include SDL_ttf header for font rendering
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_ttf.h>
 
 // Define a structure to represent a game object (e.g., paddle, ball)
 typedef struct {

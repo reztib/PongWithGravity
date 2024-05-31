@@ -1,7 +1,7 @@
-#include <SDL2/SDL.h> // Include SDL header
-#include <SDL2/SDL_ttf.h> // Include SDL_ttf header
-#include "game.h" // Include game header for game-related functions
-#include "graphics.h" // Include graphics header for rendering functions
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_ttf.h>
+#include "game.h"
+#include "graphics.h"
 
 int main() {
     // Initialize SDL window and renderer
