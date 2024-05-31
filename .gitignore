@@ -53,3 +53,36 @@ dkms.conf
 
 # IDE
 .idea/
+
+# Build directories
+/build/
+build/
+
+# CMake files
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# Visual Studio Code project files
+.vscode/
+# Eclipse project files
+.cproject
+.project
+.settings/
+# Xcode project files
+*.xcodeproj/
+*.xcworkspace/
+
+# Logs
+*.log
+
+# SDL2 and SDL2_ttf binary files
+*.bin
+
+# MacOS specific files
+.DS_Store
+
+# Windows specific files
+Thumbs.db
+*.stackdump
