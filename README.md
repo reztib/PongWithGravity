@@ -121,3 +121,4 @@ This project is licensed under the MIT License - see the [LICENSE](#LICENSE) fil
 ## Acknowledgements
 
 - [SDL2](https://www.libsdl.org/) for providing a powerful and easy-to-use library for multimedia and game development.
+- CodeMan38 for designing [this](https://fonts.google.com/specimen/Press+Start+2P) awesome font!

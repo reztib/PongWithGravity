@@ -86,3 +86,4 @@ Makefile
 # Windows specific files
 Thumbs.db
 *.stackdump
+/cmake-build-debug/

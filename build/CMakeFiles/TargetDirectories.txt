@@ -1,3 +1,0 @@
-/home/felix/gravity-pong/build/CMakeFiles/PongWithGravity.dir
-/home/felix/gravity-pong/build/CMakeFiles/edit_cache.dir
-/home/felix/gravity-pong/build/CMakeFiles/rebuild_cache.dir

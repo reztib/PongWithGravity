@@ -1,3 +1,4 @@
+#include <string.h>
 #include "graphics.h"
 
 int initSDL(SDL_Window **window, SDL_Renderer **renderer) {
@@ -37,7 +38,11 @@ void renderStartScreen(SDL_Renderer *renderer, TTF_Font *font) {
     SDL_RenderClear(renderer);
 
     SDL_Color startScreenColor = {255, 255, 255};
-    SDL_Surface* surface = TTF_RenderText_Solid(font, "Press Enter to Start", startScreenColor);
+
+    // 'wrapLength' is an amount of pixels after the text is broken into the next line
+    // If it's just zero, it accepts \n as line-break
+    // Ugly, but it works
+    SDL_Surface* surface = TTF_RenderText_Blended_Wrapped(font, "Welcome to Pong With Gravity! \n Press Enter to Start", startScreenColor, 0);
     SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, surface);
 
     int text_width = surface->w;

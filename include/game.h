@@ -18,7 +18,6 @@ typedef struct {
 typedef enum {
     STATE_START_SCREEN,
     STATE_PLAYING,
-    STATE_GAME_OVER
 } GameStateEnum;
 
 void initGame(GameState *gameState);
