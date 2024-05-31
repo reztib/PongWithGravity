@@ -116,7 +116,7 @@ Contributions are welcome! If you have any improvements or suggestions, feel fre
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](#LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/felixBtzr/PongWithGravity/blob/master/LICENSE.md) file for details.
 
 ## Acknowledgements
 
