@@ -80,20 +80,22 @@ After building the project, you can run the game using the following command in 
 
 ```
 gravity-pong/
-├── include/
-│   ├── game.h
-│   ├── graphics.h
-│   └── input.h
-├── src/
-│   ├── main.c
-│   ├── game.c
-│   ├── graphics.c
-│   └── input.c
 ├── assets/
 │   ├── fonts/
 │   │     └── PressStart2P-Regular.ttf
 │   ├── sounds/
 │   └── textures/
+├── include/
+│   ├── config.h
+│   ├── game.h
+│   ├── graphics.h
+│   └── input.h
+├── src/
+│   ├── config.c
+│   ├── main.c
+│   ├── game.c
+│   ├── graphics.c
+│   └── input.c
 ├── CMakeLists.txt
 ├── LICENSE.md
 └── README.md

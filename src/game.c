@@ -1,24 +1,20 @@
 #include "game.h"
 #include "input.h"
-
-float screenWidth = 800;
-float screenHeight = 600;
+#include "config.h"
 
 void initGame(GameState *gameState) {
-    // Initialize paddle properties
-    gameState->paddle.x = screenWidth - 10;
-    gameState->paddle.y = screenHeight - 10;
-    gameState->paddle.width = 100;
-    gameState->paddle.height = 20;
-    gameState->paddle.velocity_x = 0;
+    gameState->paddle.x = (SCREEN_WIDTH - gameState->paddle.width) / 2;
+    gameState->paddle.y = SCREEN_HEIGHT - 30.0f;
+    gameState->paddle.width = 100.0f;
+    gameState->paddle.height = 20.0f;
+    gameState->paddle.velocity_x = 0.0f;
 
-    // Initialize ball properties
-    gameState->ball.x = 320 - 10;
-    gameState->ball.y = 240 - 10;
-    gameState->ball.width = 20;
-    gameState->ball.height = 20;
-    gameState->ball.velocity_x = 2;
-    gameState->ball.velocity_y = -5;
+    gameState->ball.x = (SCREEN_WIDTH - gameState->ball.width) / 2;
+    gameState->ball.y = (SCREEN_HEIGHT - gameState->ball.height) / 2;
+    gameState->ball.width = 20.0f;
+    gameState->ball.height = 20.0f;
+    gameState->ball.velocity_x = 2.0f;
+    gameState->ball.velocity_y = -5.0f;
 
     gameState->score = 0;  // Initialize score
 }
@@ -28,17 +24,15 @@ void updateGame(GameState *gameState) {
     GameObject *ball = &gameState->ball;
     const float GRAVITY = 0.1f;
 
-    // Update paddle position
     paddle->x += paddle->velocity_x;
     if (paddle->x < 0) paddle->x = 0;
-    if (paddle->x + paddle->width > screenWidth) paddle->x = screenWidth - paddle->width;
+    if (paddle->x + paddle->width > SCREEN_WIDTH) paddle->x = SCREEN_WIDTH - paddle->width;
 
-    // Update ball position and handle collisions
     ball->velocity_y += GRAVITY;
     ball->x += ball->velocity_x;
     ball->y += ball->velocity_y;
 
-    if (ball->x < 0 || ball->x + ball->width > screenWidth) {
+    if (ball->x < 0 || ball->x + ball->width > SCREEN_WIDTH) {
         ball->velocity_x = -ball->velocity_x;
     }
     if (ball->y < 0) {
@@ -52,23 +46,21 @@ void updateGame(GameState *gameState) {
         gameState->score++;  // Increment score when the ball hits the paddle
     }
 
-    if (ball->y + ball->height > screenWidth) {
-        ball->x = screenWidth - 10;
-        ball->y = screenHeight - 10;
-        ball->velocity_x = 2;
-        ball->velocity_y = -5;
+    if (ball->y + ball->height > SCREEN_HEIGHT) {
+        ball->x = (SCREEN_WIDTH - ball->width) / 2;
+        ball->y = (SCREEN_HEIGHT - ball->height) / 2;
+        ball->velocity_x = 2.0f;
+        ball->velocity_y = -5.0f;
         gameState->score--;  // Decrement score if the ball goes out of bounds
     }
 }
 
 void handleEvents(SDL_Event *event, int *running, GameState *gameState) {
     if (event->type == SDL_QUIT) {
-        *running = 0;  // Set running flag to false if quit event is detected
+        *running = 0;
     } else if (event->type == SDL_KEYDOWN) {
-        // Handle key down event
         handleKeyDown(event->key.keysym.sym, &gameState->paddle);
     } else if (event->type == SDL_KEYUP) {
-        // Handle key up event
         handleKeyUp(event->key.keysym.sym, &gameState->paddle);
     }
 }

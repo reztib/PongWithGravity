@@ -20,7 +20,8 @@ set(SOURCE_FILES
         src/main.c
         src/game.c
         src/graphics.c
-        src/input.c)
+        src/input.c
+        src/config.c)
 
 # Add the executable target
 add_executable(PongWithGravity ${SOURCE_FILES})
