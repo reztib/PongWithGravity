@@ -91,17 +91,19 @@ gravity-pong/
 │   └── input.c
 ├── assets/
 │   ├── fonts/
-        └── PressStart2P-Regular.ttf
+│   │     └── PressStart2P-Regular.ttf
 │   ├── sounds/
 │   └── textures/
 ├── CMakeLists.txt
+├── LICENSE.md
 └── README.md
 ```
 
 - `include/`: Contains the header files for the game.
 - `src/`: Contains the source files for the game logic, graphics, and input handling.
-- `assets/`: Directory for game assets like fonts, sounds, and textures (currently empty but can be used for future enhancements).
+- `assets/`: Directory for game assets like fonts, sounds, and textures.
 - `CMakeLists.txt`: The CMake configuration file.
+- `LICENSE.md`: License file.
 - `README.md`: This file.
 
 ## Contributing
