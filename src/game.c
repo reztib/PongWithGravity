@@ -8,6 +8,7 @@ void initGame(GameState *gameState) {
     gameState->paddle.width = 100.0f;
     gameState->paddle.height = 20.0f;
     gameState->paddle.velocity_x = 0.0f;
+    gameState->paddle.velocity_y = 0.0f;
 
     gameState->ball.x = (PLAYING_FIELD_WIDTH - gameState->ball.width) / 2;
     gameState->ball.y = (PLAYING_FIELD_HEIGHT - gameState->ball.height) / 2;
@@ -25,8 +26,14 @@ void updateGame(GameState *gameState) {
     const float GRAVITY = 0.1f;
 
     paddle->x += paddle->velocity_x;
+    paddle->y += paddle->velocity_y;
+
     if (paddle->x < 0) paddle->x = 0;
     if (paddle->x + paddle->width > PLAYING_FIELD_WIDTH) paddle->x = PLAYING_FIELD_WIDTH - paddle->width;
+
+    // Ensure paddle stays within the vertical boundaries of the playing field
+    if (paddle->y < 0) paddle->y = 0;
+    if (paddle->y + paddle->height > PLAYING_FIELD_HEIGHT) paddle->y = PLAYING_FIELD_HEIGHT - paddle->height;
 
     ball->velocity_y += GRAVITY;
     ball->x += ball->velocity_x;
@@ -39,10 +46,19 @@ void updateGame(GameState *gameState) {
         ball->velocity_y = -ball->velocity_y;
     }
 
+    // Check for collision with paddle
     if (ball->y + ball->height >= paddle->y &&
         ball->x + ball->width >= paddle->x &&
         ball->x <= paddle->x + paddle->width) {
         ball->velocity_y = -ball->velocity_y;
+
+        // Adjust ball's velocity based on the paddle's velocity
+        ball->velocity_x += paddle->velocity_x * 0.3f;
+        ball->velocity_y += paddle->velocity_y * 0.3f;
+
+        // Ensure the ball is outside the paddle to prevent continuous collision
+        ball->y = paddle->y - ball->height;
+
         gameState->score++;  // Increment score when the ball hits the paddle
     }
 
@@ -59,8 +75,8 @@ void handleEvents(SDL_Event *event, int *running, GameState *gameState) {
     if (event->type == SDL_QUIT) {
         *running = 0;
     } else if (event->type == SDL_KEYDOWN) {
-        handleKeyDown(event->key.keysym.sym, &gameState->paddle);
+        handleKeyPressed(event->key.keysym.sym, &gameState->paddle);
     } else if (event->type == SDL_KEYUP) {
-        handleKeyUp(event->key.keysym.sym, &gameState->paddle);
+        handleKeyReleased(event->key.keysym.sym, &gameState->paddle);
     }
 }
