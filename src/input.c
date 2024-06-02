@@ -1,6 +1,6 @@
 #include "input.h"
 
-void handleKeyDown(SDL_Keycode key, GameObject *paddle) {
+void handleKeyPressed(SDL_Keycode key, GameObject *paddle) {
     switch (key) {
         // Move paddle left when 'A' or Left Arrow is pressed
         case SDLK_a:
@@ -12,13 +12,22 @@ void handleKeyDown(SDL_Keycode key, GameObject *paddle) {
         case SDLK_RIGHT:
             paddle->velocity_x = 5.0f;
             break;
-            // Default case for completeness (optional)
+            // Move paddle up when 'W' or Up Arrow is pressed
+        case SDLK_w:
+        case SDLK_UP:
+            paddle->velocity_y = -5.0f;
+            break;
+            // Move paddle down when 'S' or Down Arrow is pressed
+        case SDLK_s:
+        case SDLK_DOWN:
+            paddle->velocity_y = 5.0f;
+            break;
         default:
             break;
     }
 }
 
-void handleKeyUp(SDL_Keycode key, GameObject *paddle) {
+void handleKeyReleased(SDL_Keycode key, GameObject *paddle) {
     switch (key) {
         // Stop moving paddle if 'A' or Left Arrow is released
         case SDLK_a:
@@ -28,7 +37,14 @@ void handleKeyUp(SDL_Keycode key, GameObject *paddle) {
         case SDLK_RIGHT:
             paddle->velocity_x = 0.0f;
             break;
-            // Default case for completeness (optional)
+            // Stop moving paddle if 'W' or Up Arrow is released
+        case SDLK_w:
+        case SDLK_UP:
+            // Stop moving paddle if 'S' or Down Arrow is released
+        case SDLK_s:
+        case SDLK_DOWN:
+            paddle->velocity_y = 0.0f;
+            break;
         default:
             break;
     }
