@@ -37,13 +37,20 @@ void render(SDL_Renderer *renderer, GameState *gameState, TTF_Font *font) {
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
     SDL_RenderClear(renderer);
 
+    // Draw the playing field boundaries
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
-    SDL_Rect paddleRect = { (int)gameState->paddle.x, (int)gameState->paddle.y, (int)gameState->paddle.width, (int)gameState->paddle.height };
+    SDL_Rect fieldRect = { (int)((SCREEN_WIDTH - PLAYING_FIELD_WIDTH) / 2.0f), (int)((SCREEN_HEIGHT - PLAYING_FIELD_HEIGHT) / 2.0f), (int)PLAYING_FIELD_WIDTH, (int)PLAYING_FIELD_HEIGHT };
+    SDL_RenderDrawRect(renderer, &fieldRect);
+
+    // Draw the paddle
+    SDL_Rect paddleRect = { (int)(gameState->paddle.x + fieldRect.x), (int)(gameState->paddle.y + fieldRect.y), (int)gameState->paddle.width, (int)gameState->paddle.height };
     SDL_RenderFillRect(renderer, &paddleRect);
 
-    SDL_Rect ballRect = { (int)gameState->ball.x, (int)gameState->ball.y, (int)gameState->ball.width, (int)gameState->ball.height };
+    // Draw the ball
+    SDL_Rect ballRect = { (int)(gameState->ball.x + fieldRect.x), (int)(gameState->ball.y + fieldRect.y), (int)gameState->ball.width, (int)gameState->ball.height };
     SDL_RenderFillRect(renderer, &ballRect);
 
+    // Render score
     renderScore(renderer, font, gameState->score);
 
     SDL_RenderPresent(renderer);
@@ -59,7 +66,7 @@ void renderStartScreen(SDL_Renderer *renderer, TTF_Font *font) {
     int text_width = surface->w;
     int text_height = surface->h;
     SDL_FreeSurface(surface);
-    SDL_Rect renderQuad = {(int)(SCREEN_WIDTH / 2 - text_width / 2), (int)(SCREEN_HEIGHT / 2 - text_height / 2), text_width, text_height};
+    SDL_Rect renderQuad = { (int)(SCREEN_WIDTH / 2.0f - text_width / 2.0f), (int)(SCREEN_HEIGHT / 2.0f - text_height / 2.0f), text_width, text_height };
     SDL_RenderCopy(renderer, texture, NULL, &renderQuad);
     SDL_DestroyTexture(texture);
     SDL_RenderPresent(renderer);
@@ -74,7 +81,7 @@ void renderScore(SDL_Renderer *renderer, TTF_Font *font, int score) {
     int text_width = surface->w;
     int text_height = surface->h;
     SDL_FreeSurface(surface);
-    SDL_Rect renderQuad = {10, 10, text_width, text_height};
+    SDL_Rect renderQuad = {10, 575, text_width, text_height};
     SDL_RenderCopy(renderer, texture, NULL, &renderQuad);
     SDL_DestroyTexture(texture);
 }

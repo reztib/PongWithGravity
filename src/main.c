@@ -2,7 +2,6 @@
 #include <SDL2/SDL_ttf.h>
 #include "game.h"
 #include "graphics.h"
-#include "config.h"
 
 int main() {
     SDL_Window *window = NULL;

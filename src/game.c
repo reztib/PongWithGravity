@@ -3,14 +3,14 @@
 #include "config.h"
 
 void initGame(GameState *gameState) {
-    gameState->paddle.x = (SCREEN_WIDTH - gameState->paddle.width) / 2;
-    gameState->paddle.y = SCREEN_HEIGHT - 30.0f;
+    gameState->paddle.x = (PLAYING_FIELD_WIDTH - gameState->paddle.width) / 2;
+    gameState->paddle.y = PLAYING_FIELD_HEIGHT - 30.0f;
     gameState->paddle.width = 100.0f;
     gameState->paddle.height = 20.0f;
     gameState->paddle.velocity_x = 0.0f;
 
-    gameState->ball.x = (SCREEN_WIDTH - gameState->ball.width) / 2;
-    gameState->ball.y = (SCREEN_HEIGHT - gameState->ball.height) / 2;
+    gameState->ball.x = (PLAYING_FIELD_WIDTH - gameState->ball.width) / 2;
+    gameState->ball.y = (PLAYING_FIELD_HEIGHT - gameState->ball.height) / 2;
     gameState->ball.width = 20.0f;
     gameState->ball.height = 20.0f;
     gameState->ball.velocity_x = 2.0f;
@@ -26,13 +26,13 @@ void updateGame(GameState *gameState) {
 
     paddle->x += paddle->velocity_x;
     if (paddle->x < 0) paddle->x = 0;
-    if (paddle->x + paddle->width > SCREEN_WIDTH) paddle->x = SCREEN_WIDTH - paddle->width;
+    if (paddle->x + paddle->width > PLAYING_FIELD_WIDTH) paddle->x = PLAYING_FIELD_WIDTH - paddle->width;
 
     ball->velocity_y += GRAVITY;
     ball->x += ball->velocity_x;
     ball->y += ball->velocity_y;
 
-    if (ball->x < 0 || ball->x + ball->width > SCREEN_WIDTH) {
+    if (ball->x < 0 || ball->x + ball->width > PLAYING_FIELD_WIDTH) {
         ball->velocity_x = -ball->velocity_x;
     }
     if (ball->y < 0) {
@@ -46,9 +46,9 @@ void updateGame(GameState *gameState) {
         gameState->score++;  // Increment score when the ball hits the paddle
     }
 
-    if (ball->y + ball->height > SCREEN_HEIGHT) {
-        ball->x = (SCREEN_WIDTH - ball->width) / 2;
-        ball->y = (SCREEN_HEIGHT - ball->height) / 2;
+    if (ball->y + ball->height > PLAYING_FIELD_HEIGHT) {
+        ball->x = (PLAYING_FIELD_WIDTH - ball->width) / 2;
+        ball->y = (PLAYING_FIELD_HEIGHT - ball->height) / 2;
         ball->velocity_x = 2.0f;
         ball->velocity_y = -5.0f;
         gameState->score--;  // Decrement score if the ball goes out of bounds
