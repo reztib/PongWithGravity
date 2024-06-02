@@ -7,7 +7,7 @@ int initSDL(SDL_Window **window, SDL_Renderer **renderer) {
         return -1;
     }
 
-    *window = SDL_CreateWindow("Pong with Gravity", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, (int)SCREEN_WIDTH, (int)SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
+    *window = SDL_CreateWindow("Pong with Gravity", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, (int)SCREEN_WIDTH, (int)SCREEN_HEIGHT, SDL_WINDOW_SHOWN | SDL_WINDOW_FULLSCREEN | SDL_WINDOW_ALLOW_HIGHDPI);
     if (*window == NULL) {
         printf("SDL_CreateWindow Error: %s\n", SDL_GetError());
         SDL_Quit();
@@ -81,7 +81,7 @@ void renderScore(SDL_Renderer *renderer, TTF_Font *font, int score) {
     int text_width = surface->w;
     int text_height = surface->h;
     SDL_FreeSurface(surface);
-    SDL_Rect renderQuad = {10, 575, text_width, text_height};
+    SDL_Rect renderQuad = {10, 1055, text_width, text_height};
     SDL_RenderCopy(renderer, texture, NULL, &renderQuad);
     SDL_DestroyTexture(texture);
 }
