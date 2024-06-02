@@ -4,42 +4,31 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
 
-// Define a structure to represent a game object (e.g., paddle, ball)
+// Structure for game objects like paddles and ball
 typedef struct {
-    float x, y;  // Position of the object
-    float width, height;  // Dimensions of the object
-    float velocity_x, velocity_y;  // Velocity of the object
+    float x, y;
+    float width, height;
+    float velocity_x, velocity_y;
 } GameObject;
 
-// Define a structure to represent the overall game state
+// Structure for game state including paddles, ball, and scores
 typedef struct {
-    GameObject paddle;  // Paddle game object
-    GameObject ball;  // Ball game object
-    int score;  // Player's score
+    GameObject paddle1;     // Player 1 paddle
+    GameObject paddle2;     // Player 2 paddle
+    GameObject ball;        // Ball
+    int score1;             // Score for player 1
+    int score2;             // Score for player 2
 } GameState;
 
-// Define an enumeration for different game states
+// Enumeration for game states
 typedef enum {
-    STATE_START_SCREEN,  // State for the start screen
-    STATE_PLAYING,  // State for the playing mode
+    STATE_START_SCREEN,    // Start screen state
+    STATE_PLAYING,         // Playing state
 } GameStateEnum;
 
-// Function to initialize the game objects (paddle and ball)
+// Function prototypes
 void initGame(GameState *gameState);
-
-// Function to update the game logic (e.g., object positions, collisions)
 void updateGame(GameState *gameState);
-
-// Function to handle events (e.g., user input, window events)
 void handleEvents(SDL_Event *event, int *running, GameState *gameState);
-
-// Function to render the start screen
-void renderStartScreen(SDL_Renderer *renderer, TTF_Font *font);
-
-// Function to render the game objects (paddle, ball) and score
-void render(SDL_Renderer *renderer, GameState *gameState, TTF_Font *font);
-
-// Function to clean up SDL resources (window, renderer, font)
-void cleanup(SDL_Window *window, SDL_Renderer *renderer, TTF_Font *font);
 
 #endif // GAME_H

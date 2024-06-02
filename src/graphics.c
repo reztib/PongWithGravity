@@ -1,13 +1,14 @@
 #include "graphics.h"
 #include "config.h"
 
+// Initialize SDL window and renderer
 int initSDL(SDL_Window **window, SDL_Renderer **renderer) {
     if (SDL_Init(SDL_INIT_VIDEO) != 0) {
         printf("SDL_Init Error: %s\n", SDL_GetError());
         return -1;
     }
 
-    *window = SDL_CreateWindow("Pong with Gravity", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, (int)SCREEN_WIDTH, (int)SCREEN_HEIGHT, SDL_WINDOW_SHOWN | SDL_WINDOW_FULLSCREEN | SDL_WINDOW_ALLOW_HIGHDPI);
+    *window = SDL_CreateWindow("Pong with Gravity", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, (int)SCREEN_WIDTH, (int)SCREEN_HEIGHT, SDL_WINDOW_FULLSCREEN_DESKTOP | SDL_WINDOW_SHOWN);
     if (*window == NULL) {
         printf("SDL_CreateWindow Error: %s\n", SDL_GetError());
         SDL_Quit();
@@ -33,29 +34,31 @@ int initSDL(SDL_Window **window, SDL_Renderer **renderer) {
     return 0;
 }
 
+// Render the game state
 void render(SDL_Renderer *renderer, GameState *gameState, TTF_Font *font) {
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
     SDL_RenderClear(renderer);
 
-    // Draw the playing field boundaries
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
     SDL_Rect fieldRect = { (int)((SCREEN_WIDTH - PLAYING_FIELD_WIDTH) / 2.0f), (int)((SCREEN_HEIGHT - PLAYING_FIELD_HEIGHT) / 2.0f), (int)PLAYING_FIELD_WIDTH, (int)PLAYING_FIELD_HEIGHT };
     SDL_RenderDrawRect(renderer, &fieldRect);
 
-    // Draw the paddle
-    SDL_Rect paddleRect = { (int)(gameState->paddle.x + fieldRect.x), (int)(gameState->paddle.y + fieldRect.y), (int)gameState->paddle.width, (int)gameState->paddle.height };
-    SDL_RenderFillRect(renderer, &paddleRect);
+    SDL_Rect paddle1Rect = { (int)(gameState->paddle1.x + fieldRect.x), (int)(gameState->paddle1.y + fieldRect.y), (int)gameState->paddle1.width, (int)gameState->paddle1.height };
+    SDL_RenderFillRect(renderer, &paddle1Rect);
 
-    // Draw the ball
+    SDL_Rect paddle2Rect = { (int)(gameState->paddle2.x + fieldRect.x), (int)(gameState->paddle2.y + fieldRect.y), (int)gameState->paddle2.width, (int)gameState->paddle2.height };
+    SDL_RenderFillRect(renderer, &paddle2Rect);
+
     SDL_Rect ballRect = { (int)(gameState->ball.x + fieldRect.x), (int)(gameState->ball.y + fieldRect.y), (int)gameState->ball.width, (int)gameState->ball.height };
     SDL_RenderFillRect(renderer, &ballRect);
 
-    // Render score
-    renderScore(renderer, font, gameState->score);
+    renderScore(renderer, font, "Player 2: ", gameState->score2, 10, 10);                       // Score2 at the top-left with label
+    renderScore(renderer, font, "Player 1: ", gameState->score1, 10, (int)SCREEN_HEIGHT - 40);  // Score1 at the bottom-left with label
 
     SDL_RenderPresent(renderer);
 }
 
+// Render the start screen
 void renderStartScreen(SDL_Renderer *renderer, TTF_Font *font) {
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
     SDL_RenderClear(renderer);
@@ -72,20 +75,22 @@ void renderStartScreen(SDL_Renderer *renderer, TTF_Font *font) {
     SDL_RenderPresent(renderer);
 }
 
-void renderScore(SDL_Renderer *renderer, TTF_Font *font, int score) {
+// Render the score with label
+void renderScore(SDL_Renderer *renderer, TTF_Font *font, const char *label, int score, int x, int y) {
     char scoreText[100];
-    sprintf(scoreText, "Score: %d", score);
+    sprintf(scoreText, "%s%d", label, score);
     SDL_Color color = {255, 255, 255};
     SDL_Surface* surface = TTF_RenderText_Solid(font, scoreText, color);
     SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, surface);
     int text_width = surface->w;
     int text_height = surface->h;
     SDL_FreeSurface(surface);
-    SDL_Rect renderQuad = {10, 1055, text_width, text_height};
+    SDL_Rect renderQuad = {x, y, text_width, text_height};
     SDL_RenderCopy(renderer, texture, NULL, &renderQuad);
     SDL_DestroyTexture(texture);
 }
 
+// Clean up SDL resources
 void cleanup(SDL_Window *window, SDL_Renderer *renderer, TTF_Font *font) {
     if (font) TTF_CloseFont(font);
     TTF_Quit();
